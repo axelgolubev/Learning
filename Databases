@@ -1,0 +1,21 @@
+import sqlite3
+
+connection = sqlite3.connect("test.db")
+
+# connection.execute("""CREATE TABLE IF NOT EXISTS animals (
+#   id INTEGER PRIMARY KEY AUTOINCREMENT,
+#   animal TEXT NOT NULL);""")
+
+new_animal = input("Type your animals, you dog: ")
+connection.execute("""INSERT INTO
+                        animals (animal)
+                        VALUES
+                        (?)
+                        """, (new_animal,))
+connection.commit()
+cursor = connection.cursor()
+cursor.execute('SELECT * FROM animals')
+print(cursor.fetchall())
+
+
+connection.close()
