@@ -1,0 +1,43 @@
+# in template HTML. Give form=form in routes and then 
+
+{{ form.content }}
+
+# in Forms file
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+
+class Task(FlaskForm):
+	content = StringField('Write task', validators=[DataRequired()])
+	submit = SubmitField('add')
+
+# SQL start
+CREATE TABLE tasks (
+id int primary key,
+content varchar,
+is_long_period boolean
+);
+
+# if button is clicked (form.sumbit_is_succesful)
+INSERT into tasks
+VALUES (?), content
+
+#
+DELETE from tasks
+WHERE id = form.id (or smth like that)
+
+# to update info
+
+
+
+
+
+
+
+
+
+
+
+
+
